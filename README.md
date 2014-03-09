@@ -55,3 +55,6 @@ points
 * hyperbolic lines
 * hyperbolic segment (with or without support line)
 * hyperbolic triangles
+* 
+You can customize colors (method parameters) and width of objects (global variables). Here you have couple of generated figures: Poincaré disc and an hyperbolic segment, Hyperbolic triangles, Hyperbolic polyhedron (a torus with two holes, only one period is displayed).
+
