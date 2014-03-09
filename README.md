@@ -9,7 +9,7 @@ circular arcs orthogonal to the unit disc boundary. Hence, the
 shortest path between two points is uniquely defined from the circular
 arc orthogonal to the boundary containing the two points. Since
 triangles are hyperbolic triangles, sum of internal angles of a
-triangle is always less or equal to Pi.
+triangle is always less or equal to pi.
 
 This project implements basic drawing functions to display
 straight lines, straight segment and hyperbolic triangle in this
@@ -55,6 +55,8 @@ points
 * hyperbolic lines
 * hyperbolic segment (with or without support line)
 * hyperbolic triangles
-* 
+
+
 You can customize colors (method parameters) and width of objects (global variables). Here you have couple of generated figures: Poincaré disc and an hyperbolic segment, hyperbolic triangles (regular one and an ideal one), and hyperbolic uniformization of a polyhedron (a torus with two holes, only one period is displayed).
 
+![](poincare-edgeline.png?raw=true)
