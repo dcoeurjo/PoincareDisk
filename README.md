@@ -3,6 +3,7 @@ PoincareDisk
 authors: David Coeurjolly
 
 
+
 The [Poincaré disk model](http://en.wikipedia.org/wiki/Poincaré_disk_model) is one of the [n-d hyperbolic geometry models](http://en.wikipedia.org/wiki/Hyperbolic_geometry).
 
 In dimension 2, the disc is defined for points x in the unit disc
