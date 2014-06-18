@@ -61,7 +61,7 @@ points
 
 You can customize colors (method parameters) and width of objects (global variables). Here you have couple of generated figures: Poincaré disc and an hyperbolic segment, hyperbolic triangles (regular one and an ideal one), and hyperbolic uniformization of a polyhedron (a torus with two holes, only one period is displayed).
 
-![](https://raw.github.com/dcoeurjo/PoincareDisk/master/poincare-edgeline.png)
-![](https://raw.github.com/dcoeurjo/PoincareDisk/master/poincare-triangle.png)
-![](https://raw.github.com/dcoeurjo/PoincareDisk/master/poincare-triangle4.png)
-![](https://raw.github.com/dcoeurjo/PoincareDisk/master/2torus.png)
+![](poincare-edgeline.png)
+![](poincare-triangle.png)
+![](poincare-triangle4.png)
+![](2torus.png)
