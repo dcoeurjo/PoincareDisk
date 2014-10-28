@@ -34,6 +34,9 @@ struct Point{
   Point(double xx, double yy): myX(xx),myY(yy)
   {}
 
+  Point(std::complex<double> p): myX(p.real()),myY(p.imag())
+  {}
+
   double x() const
   {return myX;}
 
@@ -87,6 +90,15 @@ int main()
   drawLine(Point(0.5,0.5), Point(-0.6,0.2),true);
   flushPDF();
 
+  initPDF("poincare-example.pdf");
+  drawUnitCircle();
+  drawLine(Point(std::polar(0.93300,3.19046)), Point(std::polar(0.92440,3.33815)));
+  drawLine(Point(std::polar(0.79288,2.58823)), Point(std::polar(0.48261,2.36832)));
+  drawLine(Point(std::polar(0.34615,1.09714)), Point(std::polar(0.61119,1.62662)));
+  drawLine(Point(std::polar(0.61020,0.79445)), Point(std::polar(0.87224,3.90366)));
+  drawLine(Point(std::polar(0.90210,4.08137)), Point(std::polar(0.07962,5.36132)));
+  drawLine(Point(std::polar(0.78684,5.16442)), Point(std::polar(0.73969,4.49662)));
+  flushPDF();
 
   initPDF("poincare-triangle.pdf");
   drawUnitCircle();
