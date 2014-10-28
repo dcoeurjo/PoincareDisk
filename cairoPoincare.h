@@ -136,6 +136,41 @@ bool computeCircleParameters(const Point &a, const Point &b, double *cx, double 
 
 
 /**
+ * Compute the angles of the points (a.k.a., endpoints, ideal points, omega
+ * points, etc.) at which the circle meets the boundary of the unit circle,
+ * using the circle parameters.
+ *
+ */
+void computeOmegaPoints(const double &cx, const double &cy, const double &r, double *theta1, double *theta2)
+{
+  double dtheta = atan2(r, 1);
+  double theta = std::arg(std::complex<double>(cx, cy));
+  if (theta<0) theta+=2*M_PI;
+  *theta1 = theta - dtheta;
+  *theta2 = theta + dtheta;
+}
+
+
+/**
+ * Compute the angles of the intersect points from the perspective of the
+ * intersecting circle, since that is the perspective from which cairo_arc()
+ * draws.
+ *
+ */
+void computeIntersectAngles(const double &cx, const double &cy, const double &r, double *phi1, double *phi2)
+{
+  double dphi = atan2(1, r);
+  double itheta = std::arg(std::complex<double>(cx, cy));
+  if (itheta < 0) itheta += 2*M_PI;
+  if (itheta >= M_PI) itheta -= M_PI;
+  else if (itheta < M_PI) itheta += M_PI;
+  itheta = 2*M_PI - itheta; // convert to Cairo's polar orientation
+  *phi1 = itheta - dphi;
+  *phi2 = itheta + dphi;
+}
+
+
+/**
  * Draw the hyperbolic line through a and b.
  *
  * @param a first point.
@@ -171,9 +206,11 @@ void drawLine(const Point &a, const Point &b, bool withPoint=true  )
     }
   else
     {
+      double theta1, theta2;
+      computeIntersectAngles(cx, cy, r, &theta1, &theta2);
       cairo_set_source_rgba (cairo, 0, 0.6, 0, 0.5);
       cairo_set_line_width (cairo, EDGEWIDTH);
-      cairo_arc(cairo, cX(cx),cY(cy), r*RAD , 0, 2*M_PI);
+      cairo_arc(cairo, cX(cx),cY(cy), r*RAD, theta1, theta2);
       cairo_stroke(cairo);
     }
 }
