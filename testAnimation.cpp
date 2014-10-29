@@ -25,18 +25,22 @@ static gboolean draw_cb(GtkWidget *widget, cairo_t *cr, gpointer data)
   static const double delta = 2*M_PI / points;
   static double r = 1.0;
   static double r_inc = 0.005;
+  static double rot = M_PI/2;
+  //static const double rot_inc = r_inc;
 
   drawUnitCircle(cr, true);
 
   //if (r == 1.0 || r < 0.2) r_inc = r_inc * -1;
   if (r == 1.0 || r < -1.0) r_inc = r_inc * -1;
+  //if (rot > 2*M_PI) rot -= 2*M_PI;
 
   for (int i = 1; i <= points; ++i) {
-    drawLine(cr, Point(std::polar(r,delta*i+M_PI/2)), Point(std::polar(r,delta*(i+1)+M_PI/2)));
-    drawLine(cr, Point(std::polar(r,delta*i+M_PI/2)), Point(std::polar(r,delta*(i+2)+M_PI/2)));
+    drawLine(cr, Point(std::polar(r,delta*i+rot)), Point(std::polar(r,delta*(i+1)+rot)));
+    drawLine(cr, Point(std::polar(r,delta*i+rot)), Point(std::polar(r,delta*(i+2)+rot)));
   }
-//std::cout<<"epsilon="<<epsilon<<" r_inc="<<r_inc<<" r="<<r<<" diff="<<fabs(r-0.2)<<" bool="<<(bool)(fabs(r-0.2)>fabs(r_inc))<<std::endl;
+//std::cout<<"epsilon="<<epsilon<<" r_inc="<<r_inc<<" r="<<r<<" diff="<<fabs(r-0.2)<<" bool="<<(bool)(fabs(r-0.2)>fabs(r_inc))<<" rot="<<rot<<std::endl;
   r += r_inc;
+  //rot += rot_inc;
 
   return FALSE;
 }
