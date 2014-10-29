@@ -29,25 +29,6 @@
 #include "cairoPoincare.h"
 
 
-struct Point{
-
-  Point(double xx, double yy): myX(xx),myY(yy)
-  {}
-
-  Point(std::complex<double> p): myX(p.real()),myY(p.imag())
-  {}
-
-  double x() const
-  {return myX;}
-
-  double y() const
-  {return myY;}
-
-
-  double myX,myY;
-};
-
-
 
 /**
  * Explicit Gyrotranslation "z+a".
