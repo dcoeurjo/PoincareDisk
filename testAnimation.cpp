@@ -1,8 +1,8 @@
 /* COMPILE USING:  g++ -Wextra -o testAnimation `pkg-config --cflags --libs gtk+-3.0` testAnimation.cpp */
 #include <gtk/gtk.h>
 #include <complex>
-#include <limits>
-#include <iostream>
+//#include <limits>
+//#include <iostream>
 #include "cairoPoincare.h"
 
 #define WINDOW_WIDTH  1000
@@ -20,19 +20,20 @@ static gboolean draw_cb(GtkWidget *widget, cairo_t *cr, gpointer data)
   //     poincare.plot(list(r=ii, rad=five2*i), list(r=ii, rad=five2*(i+2)),F);
   //   }
   // }
-  static const double epsilon = std::numeric_limits<double>::epsilon();
-  static const double five2 = 2*M_PI / 5;
+  static const int points = 5;
+  //static const double epsilon = std::numeric_limits<double>::epsilon();
+  static const double delta = 2*M_PI / points;
   static double r = 1.0;
   static double r_inc = 0.005;
 
   drawUnitCircle(cr, true);
 
-  if (r == 1.0 || r < 0.2) r_inc = r_inc * -1;
-  //if (r == 1.0 || r < -1.0) r_inc = r_inc * -1;
+  //if (r == 1.0 || r < 0.2) r_inc = r_inc * -1;
+  if (r == 1.0 || r < -1.0) r_inc = r_inc * -1;
 
-  for (int i = 1; i <= 5; ++i) {
-    drawLine(cr, Point(std::polar(r,five2*i+M_PI/2)), Point(std::polar(r,five2*(i+1)+M_PI/2)));
-    drawLine(cr, Point(std::polar(r,five2*i+M_PI/2)), Point(std::polar(r,five2*(i+2)+M_PI/2)));
+  for (int i = 1; i <= points; ++i) {
+    drawLine(cr, Point(std::polar(r,delta*i+M_PI/2)), Point(std::polar(r,delta*(i+1)+M_PI/2)));
+    drawLine(cr, Point(std::polar(r,delta*i+M_PI/2)), Point(std::polar(r,delta*(i+2)+M_PI/2)));
   }
 //std::cout<<"epsilon="<<epsilon<<" r_inc="<<r_inc<<" r="<<r<<" diff="<<fabs(r-0.2)<<" bool="<<(bool)(fabs(r-0.2)>fabs(r_inc))<<std::endl;
   r += r_inc;
