@@ -25,6 +25,8 @@ static gboolean draw_cb(GtkWidget *widget, cairo_t *cr, gpointer data)
   static const double delta = 2*M_PI / points;
   static double r = 1.0;
   static double r_inc = 0.005;
+  static const double r_upper = r_inc;
+  static const double r_lower = -(r_inc*2);
   static double rot = M_PI/2;
   //static const double rot_inc = r_inc;
 
@@ -39,6 +41,8 @@ static gboolean draw_cb(GtkWidget *widget, cairo_t *cr, gpointer data)
     drawLine(cr, Point(std::polar(r,delta*i+rot)), Point(std::polar(r,delta*(i+2)+rot)));
   }
 //std::cout<<"epsilon="<<epsilon<<" r_inc="<<r_inc<<" r="<<r<<" diff="<<fabs(r-0.2)<<" bool="<<(bool)(fabs(r-0.2)>fabs(r_inc))<<" rot="<<rot<<std::endl;
+
+  if (r > r_lower && r <= r_upper) r += r_inc; // skip r ~= 0
   r += r_inc;
   //rot += rot_inc;
 

@@ -29,6 +29,7 @@
 #include<stdlib.h>
 #include<string.h>
 #include <complex>
+#include <limits>
 
 
 //Size of the cairo board
@@ -41,7 +42,8 @@
 #define POINTRADIUS 3
 
 
-#define EPSILON  0.0001
+//#define EPSILON  0.0001
+static const double EPSILON = std::numeric_limits<double>::epsilon();
 
 //Global drawing board
 cairo_surface_t *CSglobal;
