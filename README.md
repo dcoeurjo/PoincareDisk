@@ -1,6 +1,6 @@
 PoincareDisk
 ============
-authors: David Coeurjolly
+authors: David Coeurjolly, Derek Moore
 
 
 The [Poincaré disk model](http://en.wikipedia.org/wiki/Poincaré_disk_model) is one of the [n-d hyperbolic geometry models](http://en.wikipedia.org/wiki/Hyperbolic_geometry).
